@@ -3,6 +3,15 @@ import styled from 'styled-components'
 import {Card} from 'reactstrap'
 import Figure from 'react-bootstrap/Figure'
 
+
+
+
+
+const followersImage = {
+	borderRadius:"100%"
+}
+
+
 const Box = styled.div`
 flex:1;
 display:flex;
@@ -63,18 +72,19 @@ const GithubUser = props =>{
 					
 					<ul>
 					<li>Location: {props.singleCard.location}</li>
-					<li>Hireable: {JSON.stringify(props.singleCard.hireable)}</li>
+					<li>Hireable:{JSON.stringify(props.singleCard.hireable)}</li>
 					<li>Following:{props.singleCard.following}</li>
 					<li>Followers:{props.singleCard.followers}</li>
-					<li>Member Since:{props.singleCard.created_at}</li>
+					<li>Member Since:<em><small>{props.singleCard.created_at}</small></em></li>
 					</ul>
 					<details>
 					<summary>Click 2 See Followers</summary>
 						<ul>
 					{props.followers.map(user=>{
-
+							console.log(user.avatar_url)
 						return(
-					<li key={user.id}><a href={user.html_url}>Name: {user.name} <br /> UserName: {user.login}</a></li>)}
+					<li key={user.id}><a href={user.html_url}><img src={user.avatar_url} style={followersImage} width='30px' height='30px'/>-UserName: {user.login}</a></li>
+					)}
 					)}
 					</ul>
 					</details>
@@ -87,7 +97,7 @@ const GithubUser = props =>{
 
 
 					<Box>
-					<p>Last Updated:<em>{props.singleCard.updated_at}</em></p>
+					<p>Last Updated:<em><small>{props.singleCard.updated_at}</small></em></p>
 					<p>Visit Me:<a href={props.singleCard.html_url}>https://github.com/users/guytonoriji</a></p>
 
 					</Box>

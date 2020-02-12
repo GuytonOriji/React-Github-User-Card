@@ -18,7 +18,9 @@ padding:20px 0px;
 color:azure;
 `;
 
-
+const followersImage = {
+	borderRadius:"100%"
+}
 
 
 const Image = styled.img`
@@ -63,10 +65,10 @@ const UserToShow = props =>{
 					
 					<ul>
 					<li>Location: {props.picked.location  || 'null'}</li>
-					<li>Hireable: {JSON.stringify(props.picked.hireable)}</li>
+					<li>Hireable:{JSON.stringify(props.picked.hireable) || props.picked.hireable}</li>
 					<li>Following:{props.picked.following  || 'null'}</li>
 					<li>Followers:{props.picked.followers  || 'null'}</li>
-					<li>Member Since:{props.picked.created_at  || 'null'}</li>
+					<li>Member Since:<em><small>{props.picked.created_at  || 'null'}</small></em></li>
 					</ul>
 					<details>
 					<summary>Click 2 See Followers</summary>
@@ -74,7 +76,8 @@ const UserToShow = props =>{
 					{props.pickedOnesFollowers.map(user=>{
 
 						return(
-					<li key={user.id}><a href={user.html_url  || 'none'}>Name: {user.name  || 'none'} <br /> UserName: {user.login  || 'none'}</a></li>)}
+							
+					<li key={user.id}><a href={user.html_url  || 'none'}><img src={user.avatar_url} style={followersImage} width='30px' height='30px'/>-UserName: {user.login}</a></li>)}
 					)}
 					</ul>
 					</details>
@@ -87,7 +90,7 @@ const UserToShow = props =>{
 
 
 					<Box>
-					<p>Last Updated:<em>{props.picked.updated_at || 'none'}</em></p>
+					<p>Last Updated:<em><small>{props.picked.updated_at || 'none'}</small></em></p>
 					<p>Visit Me:<a href={props.picked.html_url || ''}>https://github.com/users/{props.picked.login || 'none'}</a></p>
 
 					</Box>
