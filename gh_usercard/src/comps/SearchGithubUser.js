@@ -7,6 +7,10 @@ import {Link} from 'react-router-dom'
 
 
 
+const linky ={
+  color:"azure",
+  WebkitTextFillColor:"azure"
+}
 
 
 
@@ -24,14 +28,14 @@ console.log('search props',props)
 
 	<Form onSubmit={props.findUser}>
 
-			<Input type='text' className="takeChoice" />
+			<Input type='text' className="takeChoice" placeholder="type in here"/>
 
 		 <div>
-      <Button type='submit'>Find</Button>
+      <Button type='submit' className="btn btn-success" style={linky}>Find</Button>
       </div>
 		</Form>
 
-      <Button type='submit'><Link to="/">Go Back Home?</Link></Button>
+      <Button type='submit' className="btn btn-danger" style={linky}><Link to="/">Go Back Home?</Link></Button>
 
 </Container>
 		

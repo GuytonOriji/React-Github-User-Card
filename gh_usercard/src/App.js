@@ -10,7 +10,9 @@ import {Route,Link} from 'react-router-dom'
 
 
 
-
+const linky ={
+  color:"azure"
+}
 
 
 
@@ -116,7 +118,7 @@ render(){
       <Route exact path="/">
       <GithubUser singleCard={this.state.ghUser} followers={this.state.followers} />
       <div>
-      <Button><Link to="/search">Search Users Instead? </Link></Button>
+      <Button className='btn btn-info'><Link to="/search" style={linky}>Search Users Instead? </Link></Button>
       </div>
       </Route>
 
